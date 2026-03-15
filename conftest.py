@@ -19,7 +19,7 @@ def page():
 
     yield page
 
-    input("Presiona ENTER para cerrar el navegador...")
+    #input("Presiona ENTER para cerrar el navegador...")
     browser.close()
     p.stop()
 

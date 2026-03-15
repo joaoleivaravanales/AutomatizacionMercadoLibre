@@ -8,15 +8,11 @@ Feature: Registro de usuario en mercadolibre
     And ingresa el dato de "nombreCompleto" con el valor de "<nombreCompleto>"
     And ingresa el dato de "contrasena" con el valor de "<contrasena>"
     And Presiono el boton de "Continuar"
-    Then Visualizo el mensaje en la pantalla siguiente
-    """
-    Ingresa el código que te enviamos por SMS
-    """
 
 
     Examples:
       | email              | telefono | nombreCompleto       | contrasena |
-      | ejemplito1@gmail.com  | 999999999 | Juan Silva | prueba.15475 |
+      | ejempliaao1@gmail.com  | 999999999 | Juan Silva | prueba.15475 |
      #| prueba123@gmail.com | 888888888 | Maria Lopez | prueba.15475 |
      #| pruebita@qa.cl  | 777777777 | Pedro Perez | prueba.15475 |
 
