@@ -15,6 +15,7 @@ def base_url():
 def page():
     p = sync_playwright().start()
     browser = p.chromium.launch(headless=True)
+ #   browser = p.chromium.launch(headless=False, slow_mo=500)
     page = browser.new_page()
 
     yield page
