@@ -18,6 +18,7 @@ class RegistrarPage:
         self.page.goto(base_url)
 
     def click_crear_cuenta(self):
+        self.page.wait_for_selector("text=Crea tu cuenta", timeout=20000)
         self.btn_crear_cuenta.click()
     
     def click_continuarCrear(self):
