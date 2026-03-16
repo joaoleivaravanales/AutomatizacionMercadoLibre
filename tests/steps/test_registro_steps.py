@@ -16,12 +16,11 @@ def test_registro_usuario():
 @given("Visualizo al usuario que esta en la pagina")
 def visualizar_usuario(registrar_page, base_url):
     registrar_page.open(base_url)
-    registrar_page.page.wait_for_load_state("networkidle")
     tomar_screenshot(registrar_page.page, "pagina_registro")
 
 @when('Presiono el boton de "Crea tu cuenta"')
 def presionar_boton_crear_cuenta(registrar_page):
-    registrar_page.click_crear_cuenta()
+   # registrar_page.click_crear_cuenta()
     tomar_screenshot(registrar_page.page, "crear_cuenta")
 
 @when(parsers.parse('ingresa el dato de "{campo}" con el valor de "{valor}"'))

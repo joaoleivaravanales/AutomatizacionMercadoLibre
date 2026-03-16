@@ -15,7 +15,7 @@ class RegistrarPage:
         
 
     def open(self, base_url):
-        self.page.goto(base_url)
+        self.page.goto(base_url + "/registro")
         self.page.wait_for_load_state("domcontentloaded")
 
     def click_crear_cuenta(self):
