@@ -1,7 +1,6 @@
 import pytest
 from playwright.sync_api import sync_playwright
 import os
-from datetime import datetime
 from utils.reporte_pdf import generar_reporte_pdf
 from utils.screenshot import screenshots_steps
 
@@ -13,21 +12,27 @@ def base_url():
 
 @pytest.fixture
 def page():
-    p = sync_playwright().start()
-    
-   # headless = os.getenv("CI") == "true"
-   # browser = p.chromium.launch (
-   # headless=True,
-   # args=["--disable-dev-shm-usage", "--no-sandbox"]
-   # )
-    browser = p.chromium.launch(headless=False, slow_mo=500)
-    page = browser.new_page()
 
-    yield page
+    with sync_playwright() as p:
 
-    #input("Presiona ENTER para cerrar el navegador...")
-    browser.close()
-    p.stop()
+        # Detecta si está corriendo en CI (GitHub Actions)
+        headless = True if os.getenv("CI") else False
+
+        browser = p.chromium.launch(
+            headless=headless,
+            slow_mo=500,
+            args=[
+                "--disable-dev-shm-usage",
+                "--no-sandbox"
+            ]
+        )
+
+        context = browser.new_context()
+        page = context.new_page()
+
+        yield page
+
+        browser.close()
 
 
 @pytest.hookimpl(hookwrapper=True)
