@@ -15,13 +15,14 @@ class RegistrarPage:
         
 
     def open(self, base_url):
-        self.page.goto(base_url)
-        self.page.wait_for_load_state("domcontentloaded")
+        self.page.goto(base_url, wait_until="domcontentloaded")
 
     def click_crear_cuenta(self):
+        self.btn_crear_cuenta.wait_for(state="visible", timeout=10000)
         self.btn_crear_cuenta.click()
     
     def click_continuarCrear(self):
+        self.btn_continuar.wait_for(state="visible", timeout=10000)
         self.btn_continuar.click()
 
     def ingresar_datos_formularios(self, campo, valor):
