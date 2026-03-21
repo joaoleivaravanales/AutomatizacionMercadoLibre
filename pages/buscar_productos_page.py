@@ -5,7 +5,7 @@ class BuscarPage:
     def __init__(self, page: Page):
         self.page = page
 
-        # LOCATORS (preferir role/label)
+        # LOCATORS 
         self.input_busqueda = page.get_by_placeholder("Buscar productos, marcas y más")
         self.btn_buscar = page.get_by_role("button", name="Buscar")
         self.resultados = self.page.locator(".ui-search-layout__item")
