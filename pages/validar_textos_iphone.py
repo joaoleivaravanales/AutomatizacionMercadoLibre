@@ -16,11 +16,11 @@ class ValidarTextosIphonePage:
         self.txt_busqueda.fill(producto)
         self.txt_busqueda.press("Enter")
 
-    def seleccionar_segundo_resultado(self):
+    def seleccionar_primer_resultado(self):
         productos = self.resultados_busqueda
         self.page.wait_for_selector(".ui-search-layout__item", timeout=10000)
-        assert productos.count() > 1, "No hay suficientes resultados"
-        producto = productos.nth(1)
+        assert productos.count() > 0, "No hay resultados"
+        producto = productos.nth(0)
         link = producto.locator("a").first
         link.scroll_into_view_if_needed()
         link.click()
